@@ -1,0 +1,87 @@
+﻿@model TurneroIgle.Models.Turno
+@{
+    ViewBag.Title = "Turnos";
+
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+    ViewBag.contador = ViewBag.cont;
+}
+
+<h2>Ingrese sus datos para solicitar turno: </h2>
+
+@using (Html.BeginForm())
+{ 
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Nombre
+                    </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(model => model.Nombre, htmlAttributes: new { @class = "form-control", @id = "txtNombre" })
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Apellido
+                    </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(model => model.Apellido, htmlAttributes: new { @class = "form-control", @id = "txtApellido" })
+                        @Html.ValidationMessageFor(model => model.Apellido)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Dni
+                    </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(model => model.Dni, htmlAttributes: new { @class = "form-control", @id = "txtDni" })
+                        @Html.ValidationMessageFor(model => model.Dni)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Fecha
+                    </label>
+                    <div class="col-sm-6">
+                        @Html.DropDownList("IdFecha", items, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Telefono
+                    </label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(model => model.Telefono, htmlAttributes: new { @class = "form-control", @id = "txtTelefono" })
+                        @Html.ValidationMessageFor(model => model.Telefono)
+                    </div>
+                </div>
+                <div class="form-group text-right">
+                    <div class="col-xs-12">
+                        <button class="btn btn-primary" type="submit">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-6 control-label">
+                        Turnos actuales:
+                    </label>
+                    <label class="col-sm-6 control-label">
+                        @ViewBag.contador
+                    </label>
+                    <label class="col-sm-12 control-label">
+                        ¿No podes asistir?
+                        @Html.ActionLink("dar de baja el turno", "vistaBaja", "Home")
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>

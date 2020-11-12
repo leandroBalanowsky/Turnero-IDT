@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurneroIgle", "TurneroIgle\TurneroIgle.csproj", "{33BFB6F3-B9A1-4A34-B828-1EC1C792B7FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33BFB6F3-B9A1-4A34-B828-1EC1C792B7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BFB6F3-B9A1-4A34-B828-1EC1C792B7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BFB6F3-B9A1-4A34-B828-1EC1C792B7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BFB6F3-B9A1-4A34-B828-1EC1C792B7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FF38D83-C435-4F73-A78F-BC4C49970340}
+	EndGlobalSection
+EndGlobal
