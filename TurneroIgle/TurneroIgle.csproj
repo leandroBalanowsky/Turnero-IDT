@@ -118,17 +118,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acceso Datos\AD_fechas.cs" />
+    <Compile Include="Acceso Datos\AD_reportes.cs" />
     <Compile Include="Acceso Datos\AD_turno.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Fecha.cs" />
     <Compile Include="Models\Turno.cs" />
+    <Compile Include="Models\ViewModels\ReporteVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +177,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Acciones\CargaExitosa.cshtml" />
     <Content Include="Views\Acciones\YaTieneTurno.cshtml" />
+    <Content Include="Views\Home\BuscarTurno.cshtml" />
+    <Content Include="Views\Acciones\EliminarTurno.cshtml" />
+    <Content Include="Views\Reportes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

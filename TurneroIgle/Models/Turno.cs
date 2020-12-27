@@ -16,6 +16,21 @@ namespace TurneroIgle.Models
         private string telefono;
         private int idEstado;
 
+        public Turno(int idTurno, string nombre, string apellido, string dni, int idFecha, string telefono, int idEstado)
+        {
+            this.idTurno = idTurno;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.dni = dni;
+            this.idFecha = idFecha;
+            this.telefono = telefono;
+            this.idEstado = idEstado;
+        }
+
+        public Turno()
+        {
+
+        }
         public int IdTurno { get => idTurno; set => idTurno = value; }
 
         [Required(ErrorMessage = "*Ingrese correctamente el Nombre")]
@@ -39,6 +54,7 @@ namespace TurneroIgle.Models
         public string Telefono { get => telefono; set => telefono = value; }
 
         public int IdEstado { get => idEstado; set => idEstado = value; }
+
     }
 
 }

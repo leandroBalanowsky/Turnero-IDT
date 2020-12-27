@@ -1,0 +1,109 @@
+﻿@model TurneroIgle.Models.ViewModels.ReporteVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listas de Turnos</h2>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="col-lg-12">
+            <div>
+                <h3>
+                    Turnos para el día @ViewBag.Fecha
+                </h3>
+                @Html.ActionLink("Imprimir", "BuscarTurno", "Home")
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        Nombre
+                    </th>
+                    <th class="text-center">
+                        Apellido
+                    </th>
+                    <th class="text-center">
+                        Dni
+                    </th>
+                    <th class="text-center">
+                        Telefono
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var turno in Model.ListaAsisten)
+                {
+                <tr class="text-center">
+                    <td>
+                        @turno.Nombre
+                    </td>
+                    <td>
+                        @turno.Apellido
+                    </td>
+                    <td>
+                        @turno.Dni
+                    </td>
+                    <td>
+                        @turno.Telefono
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @*<div class="col-lg-6">
+        <div class="col-lg-12">
+            <div>
+                <h3>
+                    Lista de personas
+                </h3>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        Nombre
+                    </th>
+                    <th class="text-center">
+                        Apellido
+                    </th>
+                    <th class="text-center">
+                        Dni
+                    </th>
+                    <th class="text-center">
+                        Edad
+                    </th>
+                    <th class="text-center">
+                        Sexo
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var persona in Model.ListaPersonas)
+                {
+                    <tr class="text-center">
+                        <td>
+                            @persona.Nombre
+                        </td>
+                        <td>
+                            @persona.Apellido
+                        </td>
+                        <td>
+                            @persona.Dni
+                        </td>
+                        <td>
+                            @persona.Edad
+                        </td>
+                        <td>
+                            @persona.NombreSexo
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>*@
+</div>
+

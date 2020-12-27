@@ -11,14 +11,14 @@ namespace TurneroIgle.Controllers
 {
     public class HomeController : Controller
     {
-        private int cantidadTurnos = 40;
+        private int cantidadTurnos = 5;
 
         private int contador()
         {
             int contador = cantidadTurnos - AD_turno.contadorTurno();
             return contador;
         }
-	     
+
         private List<SelectListItem> cargarFechas()
         {
             List<Fecha> fechaActual = AD_fechas.fechaTurnoActual();
@@ -26,7 +26,7 @@ namespace TurneroIgle.Controllers
             {
                 return new SelectListItem()
                 {
-                    Text = f.FechaTurno.Date.ToShortDateString(),
+                    Text = f.Dia + ", " + f.FechaTurno.Date.ToShortDateString(),
                     Value = f.IdFecha.ToString(),
                     Selected = false
                 };
@@ -44,15 +44,15 @@ namespace TurneroIgle.Controllers
         [HttpPost]
         public ActionResult Index(Turno model)
         {
-            
-            
-            
+
+
+
             if (ModelState.IsValid)
             {
                 bool noExiste = AD_turno.turnoNoExiste(model);
                 if (noExiste)
                 {
-                    if(contador() == 0)
+                    if (contador() == 0)
                     {
                         bool resultado = AD_turno.insertarEnEspera(model);
                         if (resultado)
@@ -87,7 +87,7 @@ namespace TurneroIgle.Controllers
                     return RedirectToAction("YaTieneTurno", "Acciones");
 
                 }
- 
+
             }
             else
             {
@@ -96,6 +96,19 @@ namespace TurneroIgle.Controllers
                 return View(model);
             }
         }
-
+        public ActionResult BuscarTurno()
+        {
+            ViewBag.items = cargarFechas();
+            ViewBag.Mensaje = "Ingrese su DNI";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult BuscarTurno(string Dni, int IdFecha)
+        {
+            ViewBag.items = cargarFechas();
+            ViewBag.Mensaje = "NO HAY TURNO REGISTRADO PARA EL DNI " + Dni + " (Asegurese de haber puesto bien el DNI)";
+            Turno model = AD_turno.BuscarTurno(Dni, IdFecha);
+            return View(model);
+        }
     }
 }
