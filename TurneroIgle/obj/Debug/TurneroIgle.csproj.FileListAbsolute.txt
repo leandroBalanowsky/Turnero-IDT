@@ -84,3 +84,4 @@ E:\Backup\Disco D\Document and Settings\Documentos de Leandro\TurneroIgle\Turner
 E:\Backup\Disco D\Document and Settings\Documentos de Leandro\TurneroIgle\TurneroIgle\TurneroIgle\obj\Debug\TurneroIgle.dll
 E:\Backup\Disco D\Document and Settings\Documentos de Leandro\TurneroIgle\TurneroIgle\TurneroIgle\obj\Debug\TurneroIgle.pdb
 E:\Backup\Disco D\Document and Settings\Documentos de Leandro\TurneroIgle\TurneroIgle\TurneroIgle\obj\Debug\TurneroIgle.csprojAssemblyReference.cache
+E:\Backup\Disco D\Document and Settings\Documentos de Leandro\TurneroIgle\TurneroIgle\TurneroIgle\bin\Rotativa.dll

@@ -66,7 +66,7 @@ namespace TurneroIgle.Acceso_Datos
                 SqlCommand comando = new SqlCommand();
                 string consulta = @"select top 1 idFecha, CONVERT(varchar, fechaTurno, 3) as fechaTurnoProx, dia
                                     from fechas
-                                    where fechaTurno > GETDATE()
+                                    where fechaTurno >= CONVERT (date, GETDATE())
                                     order by fechaTurno asc;";
                 comando.Parameters.Clear();
                 comando.CommandType = System.Data.CommandType.Text;
@@ -83,6 +83,98 @@ namespace TurneroIgle.Acceso_Datos
                         string dia = dr["dia"].ToString();
                         resultado = new Fecha(idFecha, fechaTurno, dia);
                         
+
+                    }
+                }
+                dr.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+                conexion.Close();
+            }
+            return resultado;
+        }
+        public static List<Fecha> fechaTurnosAnteriores()
+        {
+            List<Fecha> resultado = new List<Fecha>();
+            string cadenaConeccion = System.Configuration.ConfigurationManager.AppSettings["cadenaBD"];
+            SqlConnection conexion = new SqlConnection(cadenaConeccion);
+
+            try
+            {
+                SqlCommand comando = new SqlCommand();
+                string consulta = @"select idFecha, CONVERT(varchar, fechaTurno, 3) as fechaTurnoProx, dia
+                                    from fechas
+                                    where fechaTurno < CONVERT (date, GETDATE())
+                                    order by fechaTurno desc;";
+                
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = consulta;
+                conexion.Open();
+                comando.Connection = conexion;
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr != null)
+                {
+                    while (dr.Read())
+                    {
+                        int idFecha = int.Parse(dr["idFecha"].ToString());
+                        DateTime fechaTurno = DateTime.Parse(dr["fechaTurnoProx"].ToString());
+                        string dia = dr["dia"].ToString();
+                        Fecha aux = new Fecha(idFecha, fechaTurno, dia);
+                        resultado.Add(aux);
+
+                    }
+                }
+                dr.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+                conexion.Close();
+            }
+            return resultado;
+        }
+        public static Fecha fechaAnterior()
+        {
+            Fecha resultado = null;
+            string cadenaConeccion = System.Configuration.ConfigurationManager.AppSettings["cadenaBD"];
+            SqlConnection conexion = new SqlConnection(cadenaConeccion);
+
+            try
+            {
+                SqlCommand comando = new SqlCommand();
+                string consulta = @"select top 1 idFecha, CONVERT(varchar, fechaTurno, 3) as fechaTurnoProx, dia
+                                    from fechas
+                                    where fechaTurno < CONVERT (date, GETDATE())
+                                    order by fechaTurno desc;";
+                comando.Parameters.Clear();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = consulta;
+                conexion.Open();
+                comando.Connection = conexion;
+                SqlDataReader dr = comando.ExecuteReader();
+                if (dr != null)
+                {
+                    if (dr.Read())
+                    {
+                        int idFecha = int.Parse(dr["idFecha"].ToString());
+                        DateTime fechaTurno = DateTime.Parse(dr["fechaTurnoProx"].ToString());
+                        string dia = dr["dia"].ToString();
+                        resultado = new Fecha(idFecha, fechaTurno, dia);
+
 
                     }
                 }

@@ -1,6 +1,9 @@
 ﻿@model TurneroIgle.Models.ViewModels.ReporteVM
 @{
-    ViewBag.Title = "Index";
+
+    ViewBag.Title = "Administración";
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+
 }
 
 <h2>Listas de Turnos</h2>
@@ -12,7 +15,17 @@
                 <h3>
                     Turnos para el día @ViewBag.Fecha
                 </h3>
-                @Html.ActionLink("Imprimir", "BuscarTurno", "Home")
+            </div>
+        </div>
+        <div class=" col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.ActionLink("Imprimir", "Lista", "Reportes", htmlAttributes: new { @class = "btn btn-success" })
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <table class="table table-bordered table-striped">
@@ -30,34 +43,107 @@
                     <th class="text-center">
                         Telefono
                     </th>
+                    <th class="text-center">
+                        Acción
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var turno in Model.ListaAsisten)
                 {
-                <tr class="text-center">
-                    <td>
-                        @turno.Nombre
-                    </td>
-                    <td>
-                        @turno.Apellido
-                    </td>
-                    <td>
-                        @turno.Dni
-                    </td>
-                    <td>
-                        @turno.Telefono
-                    </td>
-                </tr>
+                    <tr class="text-center">
+                        <td>
+                            @turno.Nombre
+                        </td>
+                        <td>
+                            @turno.Apellido
+                        </td>
+                        <td>
+                            @turno.Dni
+                        </td>
+                        <td>
+                            @turno.Telefono
+                        </td>
+                        <td>
+                            No va
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
-    @*<div class="col-lg-6">
+    <div class="col-lg-6">
         <div class="col-lg-12">
             <div>
                 <h3>
-                    Lista de personas
+                    Reuniones anteriores
+                </h3>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-9">
+                                    @Html.DropDownList("IdFecha", items, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary" type="submit">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            Nombre
+                        </th>
+                        <th class="text-center">
+                            Apellido
+                        </th>
+                        <th class="text-center">
+                            Dni
+                        </th>
+                        <th class="text-center">
+                            Telefono
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var turnoAnt in Model.ListaAnteriores)
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @turnoAnt.Nombre
+                            </td>
+                            <td>
+                                @turnoAnt.Apellido
+                            </td>
+                            <td>
+                                @turnoAnt.Dni
+                            </td>
+                            <td>
+                                @turnoAnt.Telefono
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="col-lg-12">
+            <div>
+                <h3>
+                    En espera @ViewBag.Fecha
                 </h3>
             </div>
         </div>
@@ -74,36 +160,36 @@
                         Dni
                     </th>
                     <th class="text-center">
-                        Edad
+                        Telefono
                     </th>
                     <th class="text-center">
-                        Sexo
+                        Acción
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var persona in Model.ListaPersonas)
+                @foreach (var turno in Model.ListaEspera)
                 {
                     <tr class="text-center">
                         <td>
-                            @persona.Nombre
+                            @turno.Nombre
                         </td>
                         <td>
-                            @persona.Apellido
+                            @turno.Apellido
                         </td>
                         <td>
-                            @persona.Dni
+                            @turno.Dni
                         </td>
                         <td>
-                            @persona.Edad
+                            @turno.Telefono
                         </td>
                         <td>
-                            @persona.NombreSexo
+                            No va
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-    </div>*@
+    </div>    
 </div>
 
